@@ -277,6 +277,7 @@ nav{
 	width: 30px;
     height: 5px;
     background-color: #3a8bcd;
+	margin-bottom: 5px;
 }
 .product-items .heading h1{
 	color:green;
