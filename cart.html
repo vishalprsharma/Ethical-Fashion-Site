@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - Ethions</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Ethions Logo" width="250px" height="100px" />
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="product-detail.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html" class="active">Cart 🛒 <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <section class="cart-section">
+    <h2>Your Shopping Cart</h2>
+    <div id="cart-list"></div>
+    <div id="cart-total"></div>
+
+    <div style="margin-top: 20px;">
+      <button onclick="clearCart()" class="btn" style="background-color: #f44336;">Clear Cart</button>
+    </div>
+
+    <p style="margin-top: 20px;">Total Items: <span id="cart-count-page">0</span></p>
+    <a href="checkout.html" class="btn" style="margin-top: 10px; display: inline-block;">Proceed to Checkout</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ethions. All rights reserved.</p>
+  </footer>
+
+   <script>
+    function displayCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartList = document.getElementById("cart-list");
+      const cartTotal = document.getElementById("cart-total");
+      const cartCountPage = document.getElementById("cart-count-page");
+
+      cartList.innerHTML = ""; // Clear previous items
+
+      let totalPrice = 0;
+
+      cart.forEach(item => {
+        totalPrice += parseFloat(item.price.replace('Rs.', '').replace(',', ''));
+
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("cart-item");
+
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" width="100" height="100">
+          <div class="item-details">
+            <h4>${item.name}</h4>
+            <p>${item.price}</p>
+          </div>
+          <button onclick="removeFromCart('${item.id}')">Remove</button>
+        `;
+
+        cartList.appendChild(itemDiv);
+      });
+
+      cartTotal.innerHTML = `<h3>Total: Rs. ${totalPrice}</h3>`;
+      cartCountPage.textContent = cart.length;
+    }
+
+    function removeFromCart(productId) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart = cart.filter(item => item.id !== productId);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCart();
+      updateCartCount();
+    }
+
+    function clearCart() {
+      localStorage.removeItem("cart");
+      displayCart();
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartCount = document.getElementById("cart-count");
+      const cartCountPage = document.getElementById("cart-count-page");
+
+      if (cartCount) cartCount.textContent = cart.length;
+      if (cartCountPage) cartCountPage.textContent = cart.length;
+    }
+
+    window.onload = function() {
+      displayCart();
+      updateCartCount();
+    };
+  </script>
+
+</body>
+</html>

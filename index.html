@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ethions - Ethical Fashion</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- Header Starts Here -->
+<header>
+    <div class="logo"><img src="images/logo.png" alt="Ethions Logo" width="250px" height="100px" /></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="product-detail.html">Products</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart 🛒 <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+  
+  <!-- Hero Section Starts Here -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Wear Ethical. Live Beautifully.</h1>
+      <p>Discover sustainable fashion with Ethions.</p>
+      <a href="products.html" class="btn">Shop Now</a>
+    </div>
+  </section>
+  
+
+  <section id="products" class="product-section">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="images/product-1.jpg" alt="item-01">
+            <div class="desc">
+              <h4>Shirt and Jeans</h4>
+              <h6>Rs.1599</h6>
+              <button onclick="addToCart('p1', 'Shirt and Jeans', 'Rs.1599','images/product-1.jpg')">Add to Cart</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="images/product-2.jpg" alt="item-02">
+            <div class="desc">
+              <h4>Track Pants</h4>
+              <h6>RS.1699</h6>
+              <button onclick="addToCart('p2', 'Track Pants','Rs.1699','images/product-2.jpg')">Add to Cart</button>
+            </div>
+      </div>
+      <div class="product-card">
+        <img src="images/product-3.jpg" alt="item-03">
+        <div class="desc">
+          <h4>Green Kurta</h4>
+          <h6>Rs.949</h6>
+          <button onclick="addToCart('p3', 'Green Kurta', 'Rs.949','images/product-3.jpg')">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+       <img src="images/product-4.jpg" alt="item-04">
+          <div class="desc">
+            <h4>Sweatshirt</h4>
+            <h6>Rs.899</h6>
+            <button onclick="addToCart('p4', 'Sweatshirt', 'Rs.899','images/product-4.jpg')">Add to Cart</button>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <p id="form-status"></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ethions. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
