@@ -370,15 +370,61 @@ button:hover {
 
 
 /* Media Query for Mobile */
+/* --- Responsive Design --- */
 @media (max-width: 768px) {
-    .product-card {
-      width: calc(50% - 20px); /* 2 items per row for smaller screens */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
     }
-  }
-  
-  @media (max-width: 480px) {
-    .product-card {
-      width: 100%; /* Stack items in a single column */
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
     }
-  }
-  
+    .container, .product-grid, .team-section {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: auto;
+        padding: 50px 20px;
+    }
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .button {
+        padding: 8px 16px;
+    }
+    .product-card, .team-member {
+        width: 100%;
+    }
+    footer {
+        font-size: 0.9rem;
+    }
+}
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    nav.active {
+        display: flex;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
