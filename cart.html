@@ -11,11 +11,12 @@
     <div class="logo">
       <img src="images/logo.png" alt="Ethions Logo" width="250px" height="100px" />
     </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="product-detail.html">Products</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+    <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="product-detail.html">Products</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
       <a href="cart.html" class="active">Cart 🛒 <span id="cart-count">0</span></a>
     </nav>
   </header>
@@ -32,11 +33,25 @@
     <p style="margin-top: 20px;">Total Items: <span id="cart-count-page">0</span></p>
     <a href="checkout.html" class="btn" style="margin-top: 10px; display: inline-block;">Proceed to Checkout</a>
   </section>
+  <button id="mobile-cart-btn" aria-label="View Cart">
+  <span id="cart-count"></span> Items
+</button>
+
+<!-- Cart Modal -->
+<div id="cart-modal" style="display:none;">
+  <div class="modal-content">
+    <span id="close-modal" style="cursor: pointer;">&times;</span>
+    <h3>Your Cart</h3>
+    <ul id="cart-items-list"></ul>
+    <button onclick="clearCart()">Clear Cart</button>
+  </div>
+</div>
 
   <footer>
     <p>&copy; 2025 Ethions. All rights reserved.</p>
   </footer>
 
+  <script src="script.js"></script>
    <script>
     function displayCart() {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
